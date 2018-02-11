@@ -36,16 +36,16 @@ public class Main {
                         case "-": result = a.subtract(b); break;
                         //BigDecimal can not pow by fractional number, so use double for this
                         case "^":
-                            Double aa = Double.parseDouble(a.toString());
-                            Double bb = Double.parseDouble(b.toString());
+                            Double aa = a.doubleValue();
+                            Double bb = b.doubleValue();
                             result = new BigDecimal(Math.pow(aa,bb)); break;
-                        case "/": result = a.divide(b,2, RoundingMode.HALF_UP); break;
+                        case "/": result = a.divide(b,30, RoundingMode.CEILING); break;
                         case "*": result = a.multiply(b); break;
                     }
-                    queue.add(result.toString());
+                    queue.push(result.toString());
                 }
             }
-            answer = result.toString();
+            answer = result.stripTrailingZeros().toString();
         }
         catch (ArithmeticException e){
             answer = "Can not be divided into zero";
