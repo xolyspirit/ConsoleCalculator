@@ -39,7 +39,7 @@ public class Main {
                             Double aa = a.doubleValue();
                             Double bb = b.doubleValue();
                             result = new BigDecimal(Math.pow(aa,bb)); break;
-                        case "/": result = a.divide(b,30, RoundingMode.CEILING); break;
+                        case "/": result = a.divide(b,60, RoundingMode.CEILING); break;
                         case "*": result = a.multiply(b); break;
                     }
                     queue.push(result.toString());
@@ -143,7 +143,7 @@ public class Main {
     }
     //check for digit
     private boolean isDigit(char ch){
-        if(ch>47&&ch<58){
+        if((ch>47&&ch<58)||ch=='.'){
             return  true;
         }
         else {
